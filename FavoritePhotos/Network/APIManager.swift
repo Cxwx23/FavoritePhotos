@@ -10,7 +10,7 @@ import UIKit
 
 class APIManager {
     
-    static func getDataFrom(url: String, completionHandler: @escaping ([PhotoModel]) -> Void) {
+    func getPhotosFrom(url: String, completionHandler: @escaping ([PhotoModel]) -> Void) {
         
         guard let photoURL = URL(string: url) else {
             print("Invalid URL")

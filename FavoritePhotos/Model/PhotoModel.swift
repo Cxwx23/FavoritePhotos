@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/// Model built to consume data from the API
 struct PhotoModel: Codable {
     var albumId: Int?
     var id: Int?

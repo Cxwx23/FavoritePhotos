@@ -21,31 +21,27 @@ class PhotoDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         titleLabel?.text = photo?.title
         idLabel?.text = String(photo?.id ?? 0)
         urlLabel?.text = photo?.url
         thumbnailUrlLabel?.text = photo?.thumbnailUrl
         albumIdLabel?.text = String(photo?.albumId ?? 0)
         
-        if let url = photo?.url {
-            APIManager.getImageFrom(url: url) { returnedImage in
-                DispatchQueue.main.async {
-                    self.photoImage?.image = returnedImage
-                }
-                
+        guard let url = photo?.url else { return }
+        APIManager.getImageFrom(url: url) { returnedImage in
+            DispatchQueue.main.async {
+                self.photoImage?.image = returnedImage
             }
         }
-        
     }
+ 
     
     @IBAction func didPressFavoriteButton() {
         if let photo = photo {
             vm?.addPhotoToFavorites(photo: photo)
         }
-        
+        print("Button Pressed")
     }
-
-
 }
 

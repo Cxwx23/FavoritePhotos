@@ -11,8 +11,7 @@ class PhotoTableViewController: UITableViewController {
     
     @IBOutlet var photoTableView: UITableView?
     
-    var photos: [PhotoModel]?
-    let vm: ViewModel = ViewModel()
+    let vm = ViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,40 +19,21 @@ class PhotoTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        
-        vm.getPhotoData(dataURL: "https://jsonplaceholder.typicode.com/photos") { returnedData in
-            DispatchQueue.main.async {
-                self.photos = returnedData
-                self.tableView.reloadData()
-                print(self.photos ?? [])
-            }
-        }
-
+        vm.getPhotoData(from: Url.photoApi.rawValue, table: tableView)
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return photos?.count ?? 0
+        return vm.photos?.count ?? 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as! PhotoTableViewCell
-
-        if let photo = photos?[indexPath.row] {
-            cell.photoTitleLabel?.text = photo.title
-            
-            if let url = photo.thumbnailUrl {
-                APIManager.getImageFrom(url: url) { returnedImage in
-                    DispatchQueue.main.async {
-                        cell.photoThumbnail?.image = returnedImage
-                    }
-                }
-            }
-        }
-
+        
+        cell.setData(photo: vm.getPhotoDataForCell(row: indexPath.row))
+        
         return cell
     }
     
@@ -66,18 +46,19 @@ class PhotoTableViewController: UITableViewController {
             switch identifier {
                 
             case Id.detailSegue.rawValue:
-                if let detailVC = segue.destination as? PhotoDetailViewController {
-                    guard let indexPath = tableView.indexPathForSelectedRow else { return }
-                    detailVC.photo = photos?[indexPath.row]
-                    detailVC.vm = vm
-            }
-                
-            default:
-                break
+                guard let detailVC = segue.destination as? PhotoDetailViewController,
+                      let indexPath = tableView.indexPathForSelectedRow else { return }
+                detailVC.photo = vm.photos?[indexPath.row]
+                detailVC.vm = vm
+
+            case Id.favoritesSegue.rawValue:
+                guard let favoriteVC = segue.destination as? FavoriteTableViewController else { return }
+                favoriteVC.favorites = vm.getFavorites()
+                                
+            default: break
             }
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
     }
     
     // MARK: - Method Stubs for later

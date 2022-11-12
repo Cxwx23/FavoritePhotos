@@ -11,7 +11,7 @@ import CoreData
 
 struct PersistenceController {
     
-    static let sharedInstance = PersistenceController()
+    static let sharedController = PersistenceController()
     let container: NSPersistentContainer
     let context: NSManagedObjectContext
     
@@ -21,6 +21,7 @@ struct PersistenceController {
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
+        
         
         container.loadPersistentStores { _, error in
             if let error = error {
@@ -38,9 +39,7 @@ struct PersistenceController {
         context.shouldDeleteInaccessibleFaults = true
     }
     
-    
-    
-    
+
     func save() {
         do {
             try context.save()

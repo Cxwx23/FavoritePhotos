@@ -102,7 +102,6 @@
 				ED240531291DC746005A9172 /* PhotoDetailViewController.swift */,
 				ED24054A291DC83E005A9172 /* FavoriteTableViewController.swift */,
 				ED240548291DC826005A9172 /* FavoriteTableViewCell.swift */,
-				ED9AC8C9291DE8BC00047A9C /* PersistenceController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -120,7 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				ED9AC8BD291DC90800047A9C /* ViewModel.swift */,
-				ED9AC8CB291DE93100047A9C /* Favorite.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -128,7 +126,9 @@
 		ED9AC8C1291DC92300047A9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ED9AC8C9291DE8BC00047A9C /* PersistenceController.swift */,
 				ED9AC8CD291DEA1E00047A9C /* CoreDataModel.xcdatamodeld */,
+				ED9AC8CB291DE93100047A9C /* Favorite.swift */,
 				ED9AC8BF291DC91C00047A9C /* PhotoModel.swift */,
 			);
 			path = Model;

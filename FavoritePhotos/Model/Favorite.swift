@@ -7,6 +7,7 @@
 
 import CoreData
 
+/// Class created manually for the NSManagedObject, Favorite.
 @objc(Favorite)
 class Favorite: NSManagedObject, Identifiable {
     
@@ -16,13 +17,16 @@ class Favorite: NSManagedObject, Identifiable {
     @NSManaged var url: String
     @NSManaged var thumbnailUrl: String
     
+    
     static func createWith(id: Int?, title: String?, url: String?, thumbnailUrl: String?, albumId: Int?, using context: NSManagedObjectContext) {
+        
         let favorite = Favorite(context: context)
         favorite.id = id ?? 0
         favorite.title = title ?? ""
         favorite.albumId = albumId ?? 0
         favorite.thumbnailUrl = thumbnailUrl ?? ""
         favorite.url = url ?? ""
+        
         do {
             try context.save()
             print("Saved Successfully")
@@ -31,8 +35,7 @@ class Favorite: NSManagedObject, Identifiable {
         }
     }
     
-    
-    static func getFavoritesFromCoreData(context: NSManagedObjectContext) -> [Favorite] {
+    static func getFavoritesFrom(context: NSManagedObjectContext) -> [Favorite] {
         var favorites: [Favorite] = []
         
         let request = NSFetchRequest<Favorite>(entityName: "Favorite")
@@ -42,7 +45,14 @@ class Favorite: NSManagedObject, Identifiable {
         } catch let error {
             print("Error getting listItems \(error)")
         }
+
         return favorites
     }
+    
+    
+//    static func removeFavorite(withId: Int?) {
+//
+//
+//    }
     
 }
