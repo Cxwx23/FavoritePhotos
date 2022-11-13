@@ -19,3 +19,4 @@ enum Id: String {
 enum Url: String {
     case photoApi = "https://jsonplaceholder.typicode.com/photos"
 }
+

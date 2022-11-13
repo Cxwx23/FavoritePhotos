@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QZE-qr-fuA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QZE-qr-fuA">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,20 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="favoriteCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Vrq-TF-i6r" customClass="FavoriteTableViewCell" customModule="FavoritePhotos" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="favoriteCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" id="Vrq-TF-i6r" customClass="FavoriteTableViewCell" customModule="FavoritePhotos" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Vrq-TF-i6r" id="rvh-t0-aaE">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-cU-cp5">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="photoTitleLabel" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdr-cU-cp5">
                                             <rect key="frame" x="20" y="11" width="293" height="21"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="photoTitleLabel"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OKI-KP-dcO">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="photoThumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="OKI-KP-dcO">
                                             <rect key="frame" x="325" y="-6" width="55" height="55.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="OKI-KP-dcO" secondAttribute="height" multiplier="1:1" id="RvA-mR-mwk"/>
@@ -46,18 +48,21 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="photoThumbnail" destination="OKI-KP-dcO" id="dBt-91-Cnn"/>
-                                    <outlet property="photoTitleLabel" destination="hdr-cU-cp5" id="psV-9p-Dua"/>
+                                    <outlet property="photoThumbnail" destination="OKI-KP-dcO" id="ke5-63-535"/>
+                                    <outlet property="photoTitleLabel" destination="hdr-cU-cp5" id="ORg-ex-9Ee"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="SBZ-QC-oGC" id="UaM-m2-Oeh"/>
+                            <outlet property="dataSource" destination="SBZ-QC-oGC" id="W3a-ST-SCZ"/>
                             <outlet property="delegate" destination="SBZ-QC-oGC" id="o86-dW-VUZ"/>
                             <outlet property="prefetchDataSource" destination="SBZ-QC-oGC" id="gAZ-cK-0DF"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="UJB-8O-6wu"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="sBx-eY-MId" id="OJd-Av-6VF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Uz-2Q-gRO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -73,7 +78,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="photoCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="photoCell" id="BNB-cX-mIL" customClass="PhotoTableViewCell" customModule="FavoritePhotos" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="55.5"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BNB-cX-mIL" id="auW-KB-Q1P">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
@@ -165,11 +170,12 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2kt-FL-59c">
-                                <rect key="frame" x="169.5" y="683" width="75.5" height="31"/>
+                                <rect key="frame" x="165" y="683" width="84.5" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Favorite"/>
                                 <connections>
                                     <action selector="didPressFavoriteButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="JaV-03-5De"/>
+                                    <action selector="didPressFavoriteButton:" destination="Tdy-14-H0Q" eventType="touchUpInside" id="5qr-w8-ke0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -194,16 +200,17 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Tdy-14-H0Q" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1286" y="108"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="tXi-lf-K4N">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QZE-qr-fuA" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QZE-qr-fuA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Ca-sa-zzK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

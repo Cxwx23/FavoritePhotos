@@ -98,8 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				ED240544291DC7EC005A9172 /* PhotoTableViewController.swift */,
-				ED24054A291DC83E005A9172 /* FavoriteTableViewController.swift */,
 				ED240546291DC80A005A9172 /* PhotoTableViewCell.swift */,
+				ED24054A291DC83E005A9172 /* FavoriteTableViewController.swift */,
 				ED240548291DC826005A9172 /* FavoriteTableViewCell.swift */,
 				ED240531291DC746005A9172 /* PhotoDetailViewController.swift */,
 			);

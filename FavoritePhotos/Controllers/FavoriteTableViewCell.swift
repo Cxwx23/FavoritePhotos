@@ -12,11 +12,11 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var photoTitleLabel: UILabel?
     @IBOutlet weak var photoThumbnail: UIImageView?
     
-    func setData(photo: PhotoModel?, vm: ViewModel) {
-        guard let photo = photo, let url = photo.thumbnailUrl else { return }
+    func setData(photo: Favorite?, vm: ViewModel) {
+        guard let photo = photo else { return }
         self.photoTitleLabel?.text = photo.title
         
-        vm.apiManager.getImageFrom(url: url) { returnedImage in
+        vm.apiManager.getImageFrom(url: photo.thumbnailUrl) { returnedImage in
             DispatchQueue.main.async {
                 guard let image = self.photoThumbnail else { return }
                 image.layer.cornerRadius = image.frame.height / 2

@@ -10,10 +10,6 @@ import UIKit
 class PhotoDetailViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel?
-//    @IBOutlet weak var idLabel: UILabel?
-//    @IBOutlet weak var urlLabel: UILabel?
-//    @IBOutlet weak var thumbnailUrlLabel: UILabel?
-//    @IBOutlet weak var albumIdLabel: UILabel?
     @IBOutlet var photoImage: UIImageView?
     
     var photo: PhotoModel?

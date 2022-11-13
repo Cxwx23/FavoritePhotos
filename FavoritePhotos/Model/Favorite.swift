@@ -9,7 +9,7 @@ import CoreData
 
 /// Class created manually for the NSManagedObject, Favorite.
 @objc(Favorite)
-class Favorite: NSManagedObject, Identifiable {
+class Favorite: NSManagedObject, Identifiable, Photo {
     
     @NSManaged var albumId: Int
     @NSManaged var id: Int
@@ -19,15 +19,16 @@ class Favorite: NSManagedObject, Identifiable {
     
     
     static func createWith(id: Int?, title: String?, url: String?, thumbnailUrl: String?, albumId: Int?, using context: NSManagedObjectContext) {
-        
+
         let favorite = Favorite(context: context)
         favorite.id = id ?? 0
         favorite.title = title ?? ""
         favorite.albumId = albumId ?? 0
         favorite.thumbnailUrl = thumbnailUrl ?? ""
         favorite.url = url ?? ""
-        
+
         PersistenceController.sharedController.save()
+
     }
     
     static func getFavoritesFrom(context: NSManagedObjectContext) -> [Favorite] {
@@ -43,11 +44,6 @@ class Favorite: NSManagedObject, Identifiable {
 
         return favorites
     }
-    
-    
-//    static func removeFavorite(withId: Int?) {
-//
-//
-//    }
+
     
 }
