@@ -19,11 +19,7 @@ class PhotoTableViewController: UITableViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        vm.getPhotoData(from: Url.photoApi.rawValue, table: tableView)
-    }
-    
-    @IBAction func didPressFavoriteButton(_ sender: Any) {
-        performSegue(withIdentifier: Id.favoritesSegue.rawValue, sender: nil)
+        vm.getPhotosData(from: Url.photoApi.rawValue, table: tableView)
     }
     
     

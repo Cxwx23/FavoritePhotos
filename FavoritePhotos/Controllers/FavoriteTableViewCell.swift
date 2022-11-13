@@ -15,14 +15,17 @@ class FavoriteTableViewCell: UITableViewCell {
     func setData(photo: Favorite?, vm: ViewModel) {
         guard let photo = photo else { return }
         self.photoTitleLabel?.text = photo.title
-        
+        setImage(from: photo, vm: vm)
+
+    }
+    
+    func setImage(from photo: Favorite, vm: ViewModel) {
         vm.apiManager.getImageFrom(url: photo.thumbnailUrl) { returnedImage in
             DispatchQueue.main.async {
-                guard let image = self.photoThumbnail else { return }
-                image.layer.cornerRadius = image.frame.height / 2
-                image.image = returnedImage
+                guard let imageView = self.photoThumbnail else { return }
+                imageView.layer.cornerRadius = imageView.frame.height / 2
+                imageView.image = returnedImage
                 self.clipsToBounds = true
-
             }
         }
     }

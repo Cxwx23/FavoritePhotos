@@ -28,7 +28,6 @@ class PhotoDetailViewController: UIViewController {
         }
     }
  
-    
     @IBAction func didPressFavoriteButton() {
         if let photo = photo {
             vm?.addPhotoToFavorites(photo: photo)

@@ -8,12 +8,11 @@
 import Foundation
 import CoreData
 
-
-struct PersistenceController {
+struct Persistence {
     
-    static let sharedController = PersistenceController()
+    static let shared = Persistence()
     let container: NSPersistentContainer
-    let context: NSManagedObjectContext
+    var context: NSManagedObjectContext
     
     init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "CoreDataModel")
@@ -32,6 +31,11 @@ struct PersistenceController {
         }
         
         context = container.viewContext
+        SetUpContext()
+        
+    }
+    
+    mutating func SetUpContext() {
         context.automaticallyMergesChangesFromParent = true
         context.name = "viewContext"
         context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy

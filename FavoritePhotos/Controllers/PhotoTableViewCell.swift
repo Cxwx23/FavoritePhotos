@@ -15,7 +15,10 @@ class PhotoTableViewCell: UITableViewCell {
     func setData(photo: PhotoModel?, vm: ViewModel) {
         guard let photo = photo, let url = photo.thumbnailUrl else { return }
         self.photoTitleLabel?.text = photo.title
-        
+        setImage(photo, using: vm, from: url)
+    }
+    
+    func setImage(_ photo: PhotoModel, using vm: ViewModel, from url: String) {
         vm.apiManager.getImageFrom(url: url) { returnedImage in
             DispatchQueue.main.async {
                 guard let image = self.photoThumbnail else { return }

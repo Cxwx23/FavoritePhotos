@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol Photo {
-
-}
+protocol Photo { }
 
 /// Model built to consume data from the API
 struct PhotoModel: Codable, Photo {

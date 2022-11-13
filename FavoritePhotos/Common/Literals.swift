@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 enum Id: String {
     case detailSegue = "photoDetailSegue"
     case favoritesSegue = "favoritesSegue"

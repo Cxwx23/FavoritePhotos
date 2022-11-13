@@ -14,14 +14,14 @@ class ViewModel {
 
     var photos: [PhotoModel]?
     var apiManager = APIManager()
-    var context = PersistenceController.sharedController.context
+    var context = Persistence.shared.context
     var favorites: [Favorite]?
     
     init() {
         favorites = getFavorites()
     }
     
-    func getPhotoData(from dataUrl: String, table tableView: UITableView) {
+    func getPhotosData(from dataUrl: String, table tableView: UITableView) {
         apiManager.getPhotosFrom(url: dataUrl) { returnedData in
             DispatchQueue.main.async {
                 self.photos = returnedData
@@ -41,15 +41,12 @@ class ViewModel {
     }
     
     func addPhotoToFavorites(photo: PhotoModel) {
-        Favorite.createWith(id: photo.id, title: photo.title, url: photo.url,
-                            thumbnailUrl: photo.thumbnailUrl, albumId: photo.albumId,
-                            using: context)
+        Favorite.createWith(photo: photo)
         favorites = getFavorites()
-        
     }
     
     func getFavorites() -> [Favorite] {
-        return Favorite.getFavoritesFrom(context: context)
+        return Favorite.getFavorites(from: context)
     }
     
 }

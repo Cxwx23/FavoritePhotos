@@ -23,7 +23,7 @@
 		ED9AC8C0291DC91C00047A9C /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9AC8BF291DC91C00047A9C /* PhotoModel.swift */; };
 		ED9AC8C4291DCB6200047A9C /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9AC8C3291DCB6200047A9C /* APIManager.swift */; };
 		ED9AC8C8291DDFC100047A9C /* Literals.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9AC8C7291DDFC100047A9C /* Literals.swift */; };
-		ED9AC8CA291DE8BC00047A9C /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9AC8C9291DE8BC00047A9C /* PersistenceController.swift */; };
+		ED9AC8CA291DE8BC00047A9C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9AC8C9291DE8BC00047A9C /* Persistence.swift */; };
 		ED9AC8CC291DE93100047A9C /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED9AC8CB291DE93100047A9C /* Favorite.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +46,7 @@
 		ED9AC8BF291DC91C00047A9C /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		ED9AC8C3291DCB6200047A9C /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		ED9AC8C7291DDFC100047A9C /* Literals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literals.swift; sourceTree = "<group>"; };
-		ED9AC8C9291DE8BC00047A9C /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		ED9AC8C9291DE8BC00047A9C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		ED9AC8CB291DE93100047A9C /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,7 +126,7 @@
 		ED9AC8C1291DC92300047A9C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ED9AC8C9291DE8BC00047A9C /* PersistenceController.swift */,
+				ED9AC8C9291DE8BC00047A9C /* Persistence.swift */,
 				ED6EA57D291F81B600367A31 /* CoreDataModel.xcdatamodeld */,
 				ED9AC8CB291DE93100047A9C /* Favorite.swift */,
 				ED9AC8BF291DC91C00047A9C /* PhotoModel.swift */,
@@ -241,7 +241,7 @@
 				ED240545291DC7EC005A9172 /* PhotoTableViewController.swift in Sources */,
 				ED24052E291DC746005A9172 /* AppDelegate.swift in Sources */,
 				ED240549291DC826005A9172 /* FavoriteTableViewCell.swift in Sources */,
-				ED9AC8CA291DE8BC00047A9C /* PersistenceController.swift in Sources */,
+				ED9AC8CA291DE8BC00047A9C /* Persistence.swift in Sources */,
 				ED9AC8C0291DC91C00047A9C /* PhotoModel.swift in Sources */,
 				ED240530291DC746005A9172 /* SceneDelegate.swift in Sources */,
 				ED6EA57F291F81B600367A31 /* CoreDataModel.xcdatamodeld in Sources */,

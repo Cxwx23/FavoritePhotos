@@ -17,21 +17,18 @@ class Favorite: NSManagedObject, Identifiable, Photo {
     @NSManaged var url: String
     @NSManaged var thumbnailUrl: String
     
-    
-    static func createWith(id: Int?, title: String?, url: String?, thumbnailUrl: String?, albumId: Int?, using context: NSManagedObjectContext) {
+    static func createWith(photo: PhotoModel) {
+        let favorite = Favorite(context: Persistence.shared.context)
+        favorite.id = photo.id ?? 0
+        favorite.title = photo.title ?? ""
+        favorite.albumId = photo.albumId ?? 0
+        favorite.thumbnailUrl = photo.thumbnailUrl ?? ""
+        favorite.url = photo.url ?? ""
 
-        let favorite = Favorite(context: context)
-        favorite.id = id ?? 0
-        favorite.title = title ?? ""
-        favorite.albumId = albumId ?? 0
-        favorite.thumbnailUrl = thumbnailUrl ?? ""
-        favorite.url = url ?? ""
-
-        PersistenceController.sharedController.save()
-
+        Persistence.shared.save()
     }
     
-    static func getFavoritesFrom(context: NSManagedObjectContext) -> [Favorite] {
+    static func getFavorites(from context: NSManagedObjectContext) -> [Favorite] {
         var favorites: [Favorite] = []
         
         let request = NSFetchRequest<Favorite>(entityName: "Favorite")
