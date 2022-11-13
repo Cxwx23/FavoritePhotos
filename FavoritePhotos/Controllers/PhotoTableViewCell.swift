@@ -12,13 +12,17 @@ class PhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var photoTitleLabel: UILabel?
     @IBOutlet weak var photoThumbnail: UIImageView?
     
-    func setData(photo: PhotoModel?) {
+    func setData(photo: PhotoModel?, vm: ViewModel) {
         guard let photo = photo, let url = photo.thumbnailUrl else { return }
         self.photoTitleLabel?.text = photo.title
         
-        APIManager.getImageFrom(url: url) { returnedImage in
+        vm.apiManager.getImageFrom(url: url) { returnedImage in
             DispatchQueue.main.async {
-                self.photoThumbnail?.image = returnedImage
+                guard let image = self.photoThumbnail else { return }
+                image.layer.cornerRadius = image.frame.height / 2
+                image.image = returnedImage
+                self.clipsToBounds = true
+
             }
         }
     }

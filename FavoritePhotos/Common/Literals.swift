@@ -12,6 +12,8 @@ import Foundation
 enum Id: String {
     case detailSegue = "photoDetailSegue"
     case favoritesSegue = "favoritesSegue"
+    case photoCell = "photoCell"
+    case favoriteCell = "favoriteCell"
 }
 
 enum Url: String {

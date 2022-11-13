@@ -15,6 +15,12 @@ class ViewModel {
     var photos: [PhotoModel]?
     var apiManager = APIManager()
     var context = PersistenceController.sharedController.container.viewContext
+    var favorites: [Favorite]?
+    
+    init() {
+        favorites = getFavorites()
+        print(String(describing: favorites?[0].thumbnailUrl))
+    }
     
     func getPhotoData(from dataUrl: String, table mainTableView: UITableView) {
         apiManager.getPhotosFrom(url: dataUrl) { returnedData in
@@ -34,6 +40,7 @@ class ViewModel {
         Favorite.createWith(id: photo.id, title: photo.title, url: photo.url,
                             thumbnailUrl: photo.thumbnailUrl, albumId: photo.albumId,
                             using: context)
+        
     }
     
     func getFavorites() -> [Favorite] {

@@ -9,15 +9,21 @@ import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var photoTitleLabel: UILabel?
+    @IBOutlet weak var photoThumbnail: UIImageView?
+    
+    func setData(photo: PhotoModel?, vm: ViewModel) {
+        guard let photo = photo, let url = photo.thumbnailUrl else { return }
+        self.photoTitleLabel?.text = photo.title
+        
+        vm.apiManager.getImageFrom(url: url) { returnedImage in
+            DispatchQueue.main.async {
+                guard let image = self.photoThumbnail else { return }
+                image.layer.cornerRadius = image.frame.height / 2
+                image.image = returnedImage
+                self.clipsToBounds = true
+
+            }
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

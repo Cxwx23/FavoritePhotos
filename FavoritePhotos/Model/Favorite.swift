@@ -27,12 +27,7 @@ class Favorite: NSManagedObject, Identifiable {
         favorite.thumbnailUrl = thumbnailUrl ?? ""
         favorite.url = url ?? ""
         
-        do {
-            try context.save()
-            print("Saved Successfully")
-        } catch {
-            print("Error saving: \(title ?? "")")
-        }
+        PersistenceController.sharedController.save()
     }
     
     static func getFavoritesFrom(context: NSManagedObjectContext) -> [Favorite] {

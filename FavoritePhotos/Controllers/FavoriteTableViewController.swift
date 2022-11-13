@@ -9,7 +9,10 @@ import UIKit
 
 class FavoriteTableViewController: UITableViewController {
     
+    @IBOutlet var photoTableView: UITableView?
     var favorites: [Favorite]?
+    var vm = ViewModel()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +20,7 @@ class FavoriteTableViewController: UITableViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
@@ -31,9 +34,9 @@ class FavoriteTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Id.favoriteCell.rawValue, for: indexPath) as! FavoriteTableViewCell
 
-//        cell.getData()
+        cell.setData(photo: vm.getPhotoDataForCell(row: indexPath.row), vm: vm)
 
         return cell
     }

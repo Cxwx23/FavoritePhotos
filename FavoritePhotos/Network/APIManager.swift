@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class APIManager {
-    
+
     func getPhotosFrom(url: String, completionHandler: @escaping ([PhotoModel]) -> Void) {
         
         guard let photoURL = URL(string: url) else {
@@ -35,7 +35,7 @@ class APIManager {
     }
     
     
-    static func getImageFrom(url: String, completionHandler: @escaping (UIImage) -> Void) {
+    func getImageFrom(url: String, completionHandler: @escaping (UIImage) -> Void) {
         
         guard let imageURL = URL(string: url) else {
             print("Invalid URL")

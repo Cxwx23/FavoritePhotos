@@ -21,6 +21,10 @@ class PhotoTableViewController: UITableViewController {
         
         vm.getPhotoData(from: Url.photoApi.rawValue, table: tableView)
     }
+    
+    @IBAction func didPressFavoritesButton() {
+        performSegue(withIdentifier: Id.favoritesSegue.rawValue, sender: nil)
+    }
 
     // MARK: - Table view data source
 
@@ -30,9 +34,9 @@ class PhotoTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as! PhotoTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Id.photoCell.rawValue, for: indexPath) as! PhotoTableViewCell
         
-        cell.setData(photo: vm.getPhotoDataForCell(row: indexPath.row))
+        cell.setData(photo: vm.getPhotoDataForCell(row: indexPath.row), vm: vm)
         
         return cell
     }
@@ -54,6 +58,7 @@ class PhotoTableViewController: UITableViewController {
             case Id.favoritesSegue.rawValue:
                 guard let favoriteVC = segue.destination as? FavoriteTableViewController else { return }
                 favoriteVC.favorites = vm.getFavorites()
+                favoriteVC.vm = vm
                                 
             default: break
             }
